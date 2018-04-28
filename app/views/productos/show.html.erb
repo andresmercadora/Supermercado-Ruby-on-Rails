@@ -1,0 +1,35 @@
+<% if user_signed_in?%>
+<%= image_tag @producto.image.url(:medium)%>
+<p>
+  <strong>Nombre:</strong>
+  <%= @producto.nombre %>
+</p>
+
+<p>
+  <strong>Precio compra:</strong>
+  <%= @producto.precio_compra %>
+</p>
+
+<p>
+  <strong>Precio venta:</strong>
+  <%= @producto.precio_venta %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @producto.descripcion %>
+</p>
+
+<p>
+  <strong>Tipo producto:</strong>
+  <%= @producto.tipo_producto.nombre %>
+</p>
+
+<p>
+  <strong>Proveedor:</strong>
+  <%= @producto.persona.nombre %>
+</p>
+
+<%= link_to 'Edit', edit_producto_path(@producto) %> |
+<%= link_to 'Back', productos_path %>
+<% end %>

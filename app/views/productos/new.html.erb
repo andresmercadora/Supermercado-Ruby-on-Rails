@@ -1,0 +1,7 @@
+<h1>New Producto</h1>
+<% if user_signed_in?%>
+<%= render 'form', producto: @producto %>
+
+<%= link_to 'Back', productos_path %>
+<br><br>
+<% end %>

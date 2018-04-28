@@ -1,0 +1,8 @@
+<h1>Editar Tipo Producto</h1>
+<% if user_signed_in?%>
+<%= render 'form', tipo_producto: @tipo_producto %>
+
+<%= link_to 'Show', @tipo_producto %> |
+<%= link_to 'Back', tipo_productos_path %>
+<br><br><br>
+<% end %>

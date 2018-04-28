@@ -1,0 +1,80 @@
+<% if user_signed_in?%>
+<center style="color:#FF0000";><h4>
+  Categoria <%= @tipo_producto.nombre%>
+</h4></center><br>
+<center>
+    <%= image_tag @tipo_producto.image.url(:medium)%>
+
+  <p>
+    <%= link_to 'Edit', edit_tipo_producto_path(@tipo_producto) %> |
+    <%= link_to 'Back', tipo_productos_path %>
+  </p>
+</center>
+
+<hr>
+<div>
+  <% @tipo_producto.productos.each do |produ| %>
+    <div class="table">
+      <h4 style="color:#0101DF";>
+        <%= produ.nombre%>
+      </h4>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Precio compra</th>
+            <th scope="col">Precio venta</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col">Imagen</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= produ.precio_compra %></td>
+            <td><%= produ.precio_venta %></td>
+            <td><%= produ.descripcion %></td>
+            <td><%= image_tag produ.image.url(:medium)%></td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+  <% end %>
+</div>
+<% else %>
+<center style="color:#FF0000";><h4>
+  Categoria <%= @tipo_producto.nombre%>
+</h4></center><br>
+<center>
+    <%= image_tag @tipo_producto.image.url(:medium)%>
+
+  <p>
+    <%= link_to 'Back', tipo_productos_path %>
+  </p>
+</center>
+
+<hr>
+<div>
+  <% @tipo_producto.productos.each do |produ| %>
+    <div class="table">
+      <h4 style="color:#0101DF";>
+        <%= produ.nombre%>
+      </h4>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Precio venta</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col">Imagen</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= produ.precio_venta %></td>
+            <td><%= produ.descripcion %></td>
+            <td><%= image_tag produ.image.url(:medium)%></td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+  <% end %>
+</div>
+<% end %>

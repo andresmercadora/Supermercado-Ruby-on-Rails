@@ -1,0 +1,40 @@
+<h1 style="color:#0101DF";>Tipo Productos</h1>
+<br><hr>
+<% if user_signed_in?%>
+<div class="container">
+  <div class="row">
+      <div class="col">
+        <% @tipo_productos.each do |tipo_producto| %>
+          <figure class="figure">
+            <%= link_to (image_tag tipo_producto.image.url(:medium)), tipo_producto %>
+              <figcaption class="figure-caption">
+                  <strong><%= tipo_producto.nombre %></strong>
+                  <%= link_to 'Edit', edit_tipo_producto_path(tipo_producto)%>
+                  <%= link_to 'Destroy', tipo_producto, method: :delete, data: { confirm: 'Are you sure?' } %>
+                </figcaption>
+            </figure>
+          <% end %>
+      </div>
+    </div>
+  </div>
+<br>
+
+<%= link_to 'New Tipo Producto', new_tipo_producto_path, class: 'btn btn-primary' %>
+<br><br><br>
+<% else %>
+  <div class="container">
+    <div class="row">
+        <div class="col">
+          <% @tipo_productos.each do |tipo_producto| %>
+            <figure class="figure">
+              <%= link_to (image_tag tipo_producto.image.url(:medium)), tipo_producto %>
+                <figcaption class="figure-caption">
+                    <strong><%= tipo_producto.nombre %></strong>
+                  </figcaption>
+              </figure>
+            <% end %>
+        </div>
+      </div>
+    </div>
+  <br><br><br>
+<% end %>

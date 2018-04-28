@@ -1,0 +1,65 @@
+<h1 style="color:#0101DF";>Productos</h1>
+<% if user_signed_in?%>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Precio compra</th>
+      <th>Precio venta</th>
+      <th>Descripcion</th>
+      <th>Tipo producto</th>
+      <th>Proveedor</th>
+      <th>Imagen</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @productos.each do |producto| %>
+      <tr>
+        <td><%= producto.nombre %></td>
+        <td><%= producto.precio_compra %></td>
+        <td><%= producto.precio_venta %></td>
+        <td><%= producto.descripcion %></td>
+        <td><%= producto.tipo_producto.nombre %></td>
+        <td><%= producto.persona.nombre %></td>
+        <td><%= link_to (image_tag producto.image.url(:medium))%></td>
+        <td><%= link_to 'Show', producto, class: 'btn btn-primary' %></td>
+        <td><%= link_to 'Edit', edit_producto_path(producto), class: 'btn btn-primary' %></td>
+        <td><%= link_to 'Destroy', producto, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Producto', new_producto_path, class: 'btn btn-primary' %>
+<% else %>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Precio venta</th>
+      <th>Descripcion</th>
+      <th>Tipo producto</th>
+      <th>Proveedor</th>
+      <th>Imagen</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @productos.each do |producto| %>
+      <tr>
+        <td><%= producto.nombre %></td>
+        <td><%= producto.precio_venta %></td>
+        <td><%= producto.descripcion %></td>
+        <td><%= producto.tipo_producto.nombre %></td>
+        <td><%= producto.persona.nombre %></td>
+        <td><%= link_to (image_tag producto.image.url(:medium))%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% end %>

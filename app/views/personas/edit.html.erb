@@ -1,0 +1,7 @@
+<h1>Editar Proveedor</h1>
+<% if user_signed_in?%>
+<%= render 'form', persona: @persona %>
+
+<%= link_to 'Show', @persona %> |
+<%= link_to 'Back', personas_path %>
+<% end %>

@@ -1,0 +1,35 @@
+<h1>New Proveedor</h1>
+<% if user_signed_in?%>
+<p>
+  <strong>Num documento:</strong>
+  <%= @persona.num_documento %>
+</p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @persona.nombre %>
+</p>
+
+<p>
+  <strong>Apellido:</strong>
+  <%= @persona.apellido %>
+</p>
+
+<p>
+  <strong>Direccion:</strong>
+  <%= @persona.direccion %>
+</p>
+
+<p>
+  <strong>Telefono:</strong>
+  <%= @persona.telefono %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @persona.email %>
+</p>
+
+<%= link_to 'Edit', edit_persona_path(@persona) %> |
+<%= link_to 'Back', personas_path %>
+<% end %>

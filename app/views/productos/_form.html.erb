@@ -1,0 +1,53 @@
+<%= form_with(model: producto, local: true) do |form| %>
+  <% if producto.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(producto.errors.count, "error") %> prohibited this producto from being saved:</h2>
+
+      <ul>
+      <% producto.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :nombre %>
+    <%= form.text_field :nombre, id: :producto_nombre, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :precio_compra %>
+    <%= form.text_field :precio_compra, id: :producto_precio_compra, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :precio_venta %>
+    <%= form.text_field :precio_venta, id: :producto_precio_venta, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :descripcion %>
+    <%= form.text_area :descripcion, id: :producto_descripcion, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :tipo_producto_id %>
+    <%= form.collection_select :tipo_producto_id, TipoProducto.order(:nombre),:id, :nombre, include_blank: true, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :persona_id %>
+    <%= form.collection_select :persona_id, Persona.order(:nombre),:id, :nombre, include_blank: true, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :imagen %>
+    <%= form.file_field :image %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Registrar producto', :class => 'btn btn-primary' %>
+  </div>
+<% end %>
+<br>
